@@ -9,11 +9,11 @@ class MailDialoog extends StatelessWidget {
       title: Text('Voer jouw e-mailadres in'),
       content: TextField(decoration: InputDecoration(hintText: 'naam@domein.be'),),
       actions: [
-        FlatButton(
+        TextButton(
           child: Text('Annuleer'),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        FlatButton(
+        TextButton(
           child: Text('Verstuur'),
           onPressed: () => Navigator.of(context).pop(),
         )

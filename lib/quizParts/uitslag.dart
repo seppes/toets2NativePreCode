@@ -27,9 +27,11 @@ class Uitslag extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.symmetric(vertical: 20, horizontal: 60),
-            child: RaisedButton(
-              color: Colors.blue,
-              textColor: Colors.white,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue, // background
+                onPrimary: Colors.white, // foreground
+              ),
               child: Text('Opnieuw', style: lib.basisTekst, textScaleFactor: 1.2),
               onPressed: () => lib.startOpnieuw.add(true),
             ),
@@ -42,16 +44,18 @@ class Uitslag extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.symmetric(vertical: 20, horizontal: 60),
-            child: RaisedButton(
-                color: Colors.blue,
-                textColor: Colors.white,
-                child: Text('Versturen', style: lib.basisTekst, textScaleFactor: 1.2),
-                onPressed: () => {
-                  showDialog(
-                      context: context,
-                      builder: (context) => MailDialoog()
-                  )
-                }
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                onPrimary: Colors.white
+              ),
+              child: Text('Versturen', style: lib.basisTekst, textScaleFactor: 1.2),
+              onPressed: () => {
+                showDialog(
+                  context: context,
+                  builder: (context) => MailDialoog()
+                )
+              }
             ),
           )
         ]
