@@ -11,7 +11,7 @@ class Quiz extends StatefulWidget {
   }
 }
 
-class _QuizState extends State<Quiz> {
+class _QuizState extends State<Quiz> with AutomaticKeepAliveClientMixin {
   int vraagTeller = 0;
   int score = 0;
   int aantalVragen = lib.vragen.length;
@@ -27,7 +27,13 @@ class _QuizState extends State<Quiz> {
   }
 
   @override
+  bool get wantKeepAlive {
+    return true;
+  }
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     if (vraagTeller==aantalVragen) {
       return Uitslag(score);
     } else {
