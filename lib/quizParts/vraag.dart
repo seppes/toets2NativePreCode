@@ -5,50 +5,63 @@ import '../bibliotheek.dart' as lib;
 import 'antwoordKnop.dart';
 
 class Vraag extends StatelessWidget {
+  int vraagNummer;
+  int score;
+
+  Vraag(this.vraagNummer, this.score);
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Container(
-                padding: EdgeInsets.only(left: lib.tekstMarge),
-                child: Text("vraag 1 van 5", style: lib.basisTekst,)
-            ),
-            Container(
-              padding: EdgeInsets.only(right: lib.tekstMarge),
-              child: Text("score: 10", style: lib.basisTekst,),
-            )
-          ],
-        ),
-        Container(
-            margin: EdgeInsets.symmetric(vertical: 10),
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.25,
-            child: Image.asset('assets/images/flutter.png', fit: BoxFit.fitWidth,)
-        ),
-        ConstrainedBox(
-          constraints: BoxConstraints(minHeight: 50),
-          child: Container(
-              child: Text("Wat is de vraag?", style: lib.kopTekst, textAlign: TextAlign.center,)
+    List<Widget> header = <Widget>[
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+              padding: EdgeInsets.only(left: lib.tekstMarge),
+              child: Text('vraag ' + (vraagNummer+1).toString() + ' van ' + lib.vragen.length.toString(), style: lib.basisTekst,)
           ),
+          Container(
+            padding: EdgeInsets.only(right: lib.tekstMarge),
+            child: Text("score: " + score.toString(), style: lib.basisTekst,),
+          )
+        ],
+      ),
+      Container(
+          margin: EdgeInsets.symmetric(vertical: 10),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.25,
+          child: Image.asset('assets/images/' + lib.vragen[vraagNummer]['afbeelding'], fit: BoxFit.fitWidth,)
+      ),
+      ConstrainedBox(
+        constraints: BoxConstraints(minHeight: 50),
+        child: Container(
+            child: Text(lib.vragen[vraagNummer]['vraag'], style: lib.kopTekst, textAlign: TextAlign.center,)
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            AntwoordKnop(),
-            AntwoordKnop()
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            AntwoordKnop(),
-            AntwoordKnop()
-          ],
-        )
-      ],
+      )
+    ];
+
+    return ListView(
+      children: [...header, ...maakAntwoordRijen()]
     );
+  }
+
+  List<Row> maakAntwoordRijen() {
+    List<Row> rijen = List<Row>();
+    int maxRij = (lib.vragen[vraagNummer]['antwoorden'].length / 2).ceil();
+
+    for (int rij = 0; rij < maxRij; rij++) {
+      List<AntwoordKnop> knoppen = List<AntwoordKnop>();
+      knoppen.add(AntwoordKnop(lib.vragen[vraagNummer]['antwoorden'][2 * rij], lib.vragen[vraagNummer]['correct'] == 2 * rij));
+      if (rij < maxRij - 1 || lib.vragen[vraagNummer]['antwoorden'].length == 2 * rij + 2) {
+        knoppen.add(AntwoordKnop(lib.vragen[vraagNummer]['antwoorden'][2 * rij + 1], lib.vragen[vraagNummer]['correct'] == 2 * rij + 1));
+      }
+
+      rijen.add(Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: knoppen
+      ));
+    }
+
+    return rijen;
   }
 }

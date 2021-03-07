@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import '../bibliotheek.dart' as lib;
 
 class AntwoordKnop extends StatefulWidget {
+  String antwoord;
+  bool correct;
+
+  AntwoordKnop(this.antwoord, this.correct);
+
   @override
   _AntwoordKnopState createState() {
     return _AntwoordKnopState();
@@ -28,7 +33,7 @@ class _AntwoordKnopState extends State<AntwoordKnop> {
                   border: Border.all(color: Colors.blue, width: 2)
               ),
               child: Center(
-                 child: Text("antwoord", textAlign: TextAlign.center, style: lib.basisTekst)
+                 child: Text(widget.antwoord, textAlign: TextAlign.center, style: lib.basisTekst)
               ),
           ),
       )
