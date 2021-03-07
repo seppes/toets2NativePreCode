@@ -17,16 +17,14 @@ class AntwoordKnop extends StatefulWidget {
 class _AntwoordKnopState extends State<AntwoordKnop> with SingleTickerProviderStateMixin {
   AnimationController animatieController;
   Animation kleurAnimatie, randAnimatie;
-  Color eindKleur;
 
   @override
   void initState() {
     animatieController = AnimationController(duration: Duration(milliseconds: 500), vsync: this);
-    eindKleur = widget.correct ? Colors.green : Colors.red;
+    Color eindKleur = widget.correct ? Colors.green : Colors.red;
     kleurAnimatie = ColorTween(begin: Colors.blue[100], end: eindKleur).animate(animatieController);
     randAnimatie = ColorTween(begin: Colors.blue, end: eindKleur).animate(animatieController);
     kleurAnimatie.addListener(() { setState(() { }); });
-    animatieController.forward();
     super.initState();
   }
 
@@ -41,21 +39,19 @@ class _AntwoordKnopState extends State<AntwoordKnop> with SingleTickerProviderSt
             constraints: BoxConstraints(minHeight: knopBreedte * 0.5, minWidth: knopBreedte, maxWidth: knopBreedte),
             child: DecoratedBox(
                 decoration: BoxDecoration(
-                    color: Colors.blue[100],
+                    color: kleurAnimatie.value,
                     borderRadius: BorderRadius.circular(12),
                     boxShadow: [
                       BoxShadow(color: Colors.black, blurRadius: 1.0)
                     ],
-                    border: Border.all(color: Colors.blue, width: 2)
+                    border: Border.all(color: randAnimatie.value, width: 2)
                 ),
                 child: Center(
                    child: Text(widget.antwoord, textAlign: TextAlign.center, style: lib.basisTekst)
                 ),
             ),
         ),
-        onTap: () {
-            animatieController.forward();
-          },
+        onTap: () { animatieController.forward(); },
       )
     );
   }
