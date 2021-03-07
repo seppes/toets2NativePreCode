@@ -62,7 +62,7 @@ class _UitslagState extends State<Uitslag> {
               onPressed: () => {
                 showDialog(
                   context: context,
-                  builder: (context) => MailDialoog(widget.score, zetMailStatus(status))
+                  builder: (context) => MailDialoog(widget.score, zetMailStatus)
                 )
               }
             ),
