@@ -16,7 +16,8 @@ class AntwoordKnop extends StatefulWidget {
 
 class _AntwoordKnopState extends State<AntwoordKnop> with SingleTickerProviderStateMixin {
   AnimationController animatieController;
-  Animation kleurAnimatie, randAnimatie;
+  Animation<Color> kleurAnimatie, randAnimatie;
+  Animation<double> vervaagAnimatie;
 
   @override
   void initState() {
@@ -24,6 +25,7 @@ class _AntwoordKnopState extends State<AntwoordKnop> with SingleTickerProviderSt
     Color eindKleur = widget.correct ? Colors.green : Colors.red;
     kleurAnimatie = ColorTween(begin: Colors.blue[100], end: eindKleur).animate(animatieController);
     randAnimatie = ColorTween(begin: Colors.blue, end: eindKleur).animate(animatieController);
+    vervaagAnimatie = Tween<double>(begin: 1, end: 0.3).animate(animatieController);
     kleurAnimatie.addListener(() { setState(() { }); });
     super.initState();
   }
@@ -35,21 +37,24 @@ class _AntwoordKnopState extends State<AntwoordKnop> with SingleTickerProviderSt
     return Padding(
       padding: const EdgeInsets.all(lib.tekstMarge),
       child: GestureDetector(
-        child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: knopBreedte * 0.5, minWidth: knopBreedte, maxWidth: knopBreedte),
-            child: DecoratedBox(
-                decoration: BoxDecoration(
-                    color: kleurAnimatie.value,
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(color: Colors.black, blurRadius: 1.0)
-                    ],
-                    border: Border.all(color: randAnimatie.value, width: 2)
-                ),
-                child: Center(
-                   child: Text(widget.antwoord, textAlign: TextAlign.center, style: lib.basisTekst)
-                ),
-            ),
+        child: Opacity(
+          child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: knopBreedte * 0.5, minWidth: knopBreedte, maxWidth: knopBreedte),
+              child: DecoratedBox(
+                  decoration: BoxDecoration(
+                      color: kleurAnimatie.value,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(color: Colors.black, blurRadius: 1.0)
+                      ],
+                      border: Border.all(color: randAnimatie.value, width: 2)
+                  ),
+                  child: Center(
+                     child: Text(widget.antwoord, textAlign: TextAlign.center, style: lib.basisTekst)
+                  ),
+              ),
+          ),
+          opacity: vervaagAnimatie.value,
         ),
         onTap: () { animatieController.forward(); },
       )
