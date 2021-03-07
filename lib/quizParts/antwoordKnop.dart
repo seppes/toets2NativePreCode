@@ -12,6 +12,8 @@ class AntwoordKnop extends StatefulWidget {
 class _AntwoordKnopState extends State<AntwoordKnop> {
   @override
   Widget build(BuildContext context) {
+    double knopBreedte = MediaQuery.of(context).size.width * 0.5 - lib.tekstMarge * 2;
+
     return Padding(
       padding: const EdgeInsets.all(lib.tekstMarge),
       child: ConstrainedBox(
