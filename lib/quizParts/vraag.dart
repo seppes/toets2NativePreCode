@@ -5,10 +5,11 @@ import '../bibliotheek.dart' as lib;
 import 'antwoordKnop.dart';
 
 class Vraag extends StatelessWidget {
-  int vraagNummer;
-  int score;
+  final int vraagNummer;
+  final int score;
+  final Function verwerkAntwoord;
 
-  Vraag(this.vraagNummer, this.score);
+  Vraag(this.vraagNummer, this.score, this.verwerkAntwoord);
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +52,9 @@ class Vraag extends StatelessWidget {
 
     for (int rij = 0; rij < maxRij; rij++) {
       List<AntwoordKnop> knoppen = List<AntwoordKnop>();
-      knoppen.add(AntwoordKnop(lib.vragen[vraagNummer]['antwoorden'][2 * rij], lib.vragen[vraagNummer]['correct'] == 2 * rij));
+      knoppen.add(AntwoordKnop(lib.vragen[vraagNummer]['antwoorden'][2 * rij], lib.vragen[vraagNummer]['correct'] == 2 * rij, verwerkAntwoord));
       if (rij < maxRij - 1 || lib.vragen[vraagNummer]['antwoorden'].length == 2 * rij + 2) {
-        knoppen.add(AntwoordKnop(lib.vragen[vraagNummer]['antwoorden'][2 * rij + 1], lib.vragen[vraagNummer]['correct'] == 2 * rij + 1));
+        knoppen.add(AntwoordKnop(lib.vragen[vraagNummer]['antwoorden'][2 * rij + 1], lib.vragen[vraagNummer]['correct'] == 2 * rij + 1, verwerkAntwoord));
       }
 
       rijen.add(Row(

@@ -4,11 +4,12 @@ import 'package:audioplayers/audio_cache.dart';
 import '../bibliotheek.dart' as lib;
 
 class AntwoordKnop extends StatefulWidget {
-  String antwoord;
-  bool correct;
+  final String antwoord;
+  final bool correct;
   String geluidsBestand;
+  final Function verwerkAntwoord;
 
-  AntwoordKnop(this.antwoord, this.correct) {
+  AntwoordKnop(this.antwoord, this.correct, this.verwerkAntwoord) {
     geluidsBestand = correct ? 'audio/goed.mp3' : 'audio/fout.mp3';
   }
 
@@ -32,7 +33,19 @@ class _AntwoordKnopState extends State<AntwoordKnop> with SingleTickerProviderSt
     randAnimatie = ColorTween(begin: Colors.blue, end: eindKleur).animate(animatieController);
     vervaagAnimatie = Tween<double>(begin: 1, end: 0.3).animate(animatieController);
     kleurAnimatie.addListener(() { setState(() { }); });
+    kleurAnimatie.addStatusListener((status) {
+      if (status==AnimationStatus.completed) {
+        widget.verwerkAntwoord(widget.correct);
+        animatieController.reset();
+      }
+    });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    animatieController.dispose();
+    super.dispose();
   }
 
   @override

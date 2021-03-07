@@ -21,7 +21,16 @@ class _QuizState extends State<Quiz> {
     if (vraagTeller==aantalVragen) {
       return Uitslag();
     } else {
-      return Vraag(vraagTeller, score);
+      return Vraag(vraagTeller, score, verwerkAntwoord);
     }
+  }
+
+  void verwerkAntwoord(bool isCorrect) {
+    if (isCorrect) {
+      score++;
+    }
+    setState(() {
+      vraagTeller++;
+    });
   }
 }
