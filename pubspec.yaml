@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
+  audioplayers: 0.17.0
   flutter_test:
     sdk: flutter
 
@@ -49,6 +50,8 @@ flutter:
     - assets/images/flutter.png
     - assets/images/programminglanguages.png
     - assets/images/widgettree.png
+    - assets/audio/goed.mp3
+    - assets/audio/fout.mp3
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

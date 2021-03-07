@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 import '../bibliotheek.dart' as lib;
 
 class AntwoordKnop extends StatefulWidget {
   String antwoord;
   bool correct;
+  String geluidsBestand;
 
-  AntwoordKnop(this.antwoord, this.correct);
+  AntwoordKnop(this.antwoord, this.correct) {
+    geluidsBestand = correct ? 'audio/goed.mp3' : 'audio/fout.mp3';
+  }
 
   @override
   _AntwoordKnopState createState() {
@@ -18,6 +22,7 @@ class _AntwoordKnopState extends State<AntwoordKnop> with SingleTickerProviderSt
   AnimationController animatieController;
   Animation<Color> kleurAnimatie, randAnimatie;
   Animation<double> vervaagAnimatie;
+  final AudioCache audioSpeler = AudioCache();
 
   @override
   void initState() {
@@ -56,7 +61,10 @@ class _AntwoordKnopState extends State<AntwoordKnop> with SingleTickerProviderSt
           ),
           opacity: vervaagAnimatie.value,
         ),
-        onTap: () { animatieController.forward(); },
+        onTap: () {
+            animatieController.forward();
+            audioSpeler.play(widget.geluidsBestand);
+          },
       )
     );
   }
