@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:intl/intl.dart';
+import 'package:email_validator/email_validator.dart';
 
 class MailDialoog extends StatelessWidget {
   final int score;
   final TextEditingController tekstveldController = TextEditingController();
   final tijdOpmaak = DateFormat('dd-MM-yyyy H:m:s');
+  bool correctEmailAdres = false;
 
   MailDialoog(this.score);
 
@@ -14,7 +16,17 @@ class MailDialoog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text('Voer jouw e-mailadres in'),
-      content: TextField(
+      content: TextFormField(
+        validator: (invoer) {
+          if (EmailValidator.validate(invoer)) {
+            correctEmailAdres = true;
+            return "";
+          } else {
+            correctEmailAdres = false;
+            return "Voer een geldig e-mailadres in";
+          }
+        },
+        autovalidateMode: AutovalidateMode.always,
         controller: tekstveldController,
         decoration: InputDecoration(hintText: 'naam@domein.be'),
       ),
@@ -25,7 +37,12 @@ class MailDialoog extends StatelessWidget {
         ),
         TextButton(
           child: Text('Verstuur'),
-          onPressed: () => stuurMail(),
+          onPressed: () {
+            if (correctEmailAdres) {
+              stuurMail();
+              Navigator.of(context).pop();
+            }
+          },
         )
       ],
     );
