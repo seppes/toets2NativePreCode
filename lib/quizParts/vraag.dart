@@ -28,6 +28,26 @@ class Vraag extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.25,
             child: Image.asset('assets/images/flutter.png', fit: BoxFit.fitWidth,)
         ),
+        ConstrainedBox(
+          constraints: BoxConstraints(minHeight: 50),
+          child: Container(
+              child: Text("Wat is de vraag?", style: lib.kopTekst, textAlign: TextAlign.center,)
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            AntwoordKnop(),
+            AntwoordKnop()
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            AntwoordKnop(),
+            AntwoordKnop()
+          ],
+        )
       ],
     );
   }

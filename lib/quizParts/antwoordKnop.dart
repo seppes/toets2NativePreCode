@@ -2,9 +2,34 @@ import 'package:flutter/material.dart';
 
 import '../bibliotheek.dart' as lib;
 
-class AntwoordKnop extends StatelessWidget {
+class AntwoordKnop extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Container(color: Colors.green);
+  _AntwoordKnopState createState() {
+    return _AntwoordKnopState();
   }
 }
+
+class _AntwoordKnopState extends State<AntwoordKnop> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(lib.tekstMarge),
+      child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: knopBreedte * 0.5, minWidth: knopBreedte, maxWidth: knopBreedte),
+          child: DecoratedBox(
+              decoration: BoxDecoration(
+                  color: Colors.blue[100],
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [ BoxShadow(color: Colors.black, blurRadius: 1.0) ],
+                  border: Border.all(color: Colors.blue, width: 2)
+              ),
+              child: Center(
+                 child: Text("antwoord", textAlign: TextAlign.center, style: lib.basisTekst)
+              ),
+          ),
+      )
+    );
+  }
+}
+
+
