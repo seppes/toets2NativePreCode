@@ -22,7 +22,9 @@ class _AntwoordKnopState extends State<AntwoordKnop> {
               decoration: BoxDecoration(
                   color: Colors.blue[100],
                   borderRadius: BorderRadius.circular(12),
-                  boxShadow: [ BoxShadow(color: Colors.black, blurRadius: 1.0) ],
+                  boxShadow: [
+                    BoxShadow(color: Colors.black, blurRadius: 1.0)
+                  ],
                   border: Border.all(color: Colors.blue, width: 2)
               ),
               child: Center(
