@@ -16,10 +16,20 @@ class _QuizState extends State<Quiz> {
   int score = 0;
   int aantalVragen = lib.vragen.length;
 
+  void initState() {
+    lib.startOpnieuw.stream.listen((event) {
+      setState(() {
+        score = 0;
+        vraagTeller = 0;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     if (vraagTeller==aantalVragen) {
-      return Uitslag();
+      return Uitslag(score);
     } else {
       return Vraag(vraagTeller, score, verwerkAntwoord);
     }

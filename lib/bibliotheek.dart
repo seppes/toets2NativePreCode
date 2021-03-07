@@ -1,5 +1,6 @@
 library bibliotheek;
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 const double tekstMarge = 10.0;
 const TextStyle basisTekst = TextStyle(
@@ -32,3 +33,5 @@ List<dynamic> vragen = [
     "afbeelding": "widgettree.png"
   }
 ];
+
+StreamController<bool> startOpnieuw = StreamController<bool>();

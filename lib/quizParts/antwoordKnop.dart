@@ -23,14 +23,15 @@ class _AntwoordKnopState extends State<AntwoordKnop> with SingleTickerProviderSt
   AnimationController animatieController;
   Animation<Color> kleurAnimatie, randAnimatie;
   Animation<double> vervaagAnimatie;
+  ColorTween kleurTween = ColorTween(begin: Colors.blue[100], end: Colors.red);
+  ColorTween randTween = ColorTween(begin: Colors.blue[100], end: Colors.red);
   final AudioCache audioSpeler = AudioCache();
 
   @override
   void initState() {
     animatieController = AnimationController(duration: Duration(milliseconds: 500), vsync: this);
-    Color eindKleur = widget.correct ? Colors.green : Colors.red;
-    kleurAnimatie = ColorTween(begin: Colors.blue[100], end: eindKleur).animate(animatieController);
-    randAnimatie = ColorTween(begin: Colors.blue, end: eindKleur).animate(animatieController);
+    kleurAnimatie = kleurTween.animate(animatieController);
+    randAnimatie = randTween.animate(animatieController);
     vervaagAnimatie = Tween<double>(begin: 1, end: 0.3).animate(animatieController);
     kleurAnimatie.addListener(() { setState(() { }); });
     kleurAnimatie.addStatusListener((status) {
@@ -51,6 +52,10 @@ class _AntwoordKnopState extends State<AntwoordKnop> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     double knopBreedte = MediaQuery.of(context).size.width * 0.5 - lib.tekstMarge * 2;
+    Color eindKleur = widget.correct ? Colors.green : Colors.red;
+    print(widget.antwoord + ' : ' + widget.correct.toString() + ' -> ' + eindKleur.toString());
+    kleurTween.end = eindKleur;
+    randTween.end = eindKleur;
 
     return Padding(
       padding: const EdgeInsets.all(lib.tekstMarge),
