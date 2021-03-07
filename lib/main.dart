@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'bibliotheek.dart' as lib;
+
 import 'welkom.dart';
 import 'quiz.dart';
 import 'info.dart';
