@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../bibliotheek.dart' as lib;
 
+import 'mailDialoog.dart';
+
 class Uitslag extends StatelessWidget {
   final int score;
 
@@ -30,6 +32,26 @@ class Uitslag extends StatelessWidget {
               textColor: Colors.white,
               child: Text('Opnieuw', style: lib.basisTekst, textScaleFactor: 1.2),
               onPressed: () => lib.startOpnieuw.add(true),
+            ),
+          ),
+          Container(
+              height: 60,
+              child: Center(
+                child: Text("Deel je uitslag", style: lib.kopTekst,),
+              )
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 20, horizontal: 60),
+            child: RaisedButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                child: Text('Versturen', style: lib.basisTekst, textScaleFactor: 1.2),
+                onPressed: () => {
+                  showDialog(
+                      context: context,
+                      builder: (context) => MailDialoog()
+                  )
+                }
             ),
           )
         ]

@@ -31,6 +31,7 @@ dependencies:
 
 dev_dependencies:
   audioplayers: 0.17.0
+  mailer: ^3.3.0
   flutter_test:
     sdk: flutter
 
