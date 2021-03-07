@@ -9,8 +9,9 @@ class MailDialoog extends StatelessWidget {
   final TextEditingController tekstveldController = TextEditingController();
   final tijdOpmaak = DateFormat('dd-MM-yyyy H:m:s');
   bool correctEmailAdres = false;
+  final Function zetMailStatus;
 
-  MailDialoog(this.score);
+  MailDialoog(this.score, this.zetMailStatus);
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +71,9 @@ class MailDialoog extends StatelessWidget {
 
     try {
       await send(message, smtpServer);
-      print('Succesvol verzonden');
+      zetMailStatus(false);
     } catch(error) {
-      print(error);
+      zetMailStatus(true);
     }
   }
 }

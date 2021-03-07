@@ -4,10 +4,19 @@ import '../bibliotheek.dart' as lib;
 
 import 'mailDialoog.dart';
 
-class Uitslag extends StatelessWidget {
+class Uitslag extends StatefulWidget {
   final int score;
 
   Uitslag(this.score);
+
+  @override
+  _UitslagState createState() => _UitslagState();
+}
+
+class _UitslagState extends State<Uitslag> {
+  String mailStatus = "Deel je uitslag";
+  String mailKnopTekst = "Versturen";
+  bool kanMailVerzenden = true;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +29,7 @@ class Uitslag extends StatelessWidget {
               )
           ),
           Center(
-            child: Text(score.toString(), style: lib.kopTekst, textScaleFactor: 7),
+            child: Text(widget.score.toString(), style: lib.kopTekst, textScaleFactor: 7),
           ),
           Center(
             child: Text("van de ${lib.vragen.length} vragen goed", style: lib.basisTekst, textScaleFactor: 1.2),
@@ -39,27 +48,38 @@ class Uitslag extends StatelessWidget {
           Container(
               height: 60,
               child: Center(
-                child: Text("Deel je uitslag", style: lib.kopTekst,),
+                child: Text(mailStatus, style: lib.kopTekst,),
               )
           ),
-          Container(
+          if (kanMailVerzenden) Container(
             margin: EdgeInsets.symmetric(vertical: 20, horizontal: 60),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 primary: Colors.blue,
                 onPrimary: Colors.white
               ),
-              child: Text('Versturen', style: lib.basisTekst, textScaleFactor: 1.2),
+              child: Text(mailKnopTekst, style: lib.basisTekst, textScaleFactor: 1.2),
               onPressed: () => {
                 showDialog(
                   context: context,
-                  builder: (context) => MailDialoog(score)
+                  builder: (context) => MailDialoog(widget.score, zetMailStatus(status))
                 )
               }
             ),
           )
         ]
     );
+  }
+
+  void zetMailStatus(bool status) {
+    setState(() {
+      this.kanMailVerzenden = status;
+      if (status) {
+        this.mailStatus = "Deel je uitslag";
+      } else {
+        this.mailStatus = "Je uitslag is verzonden";
+      }
+    });
   }
 }
 
