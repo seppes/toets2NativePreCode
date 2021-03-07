@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
+import 'package:intl/intl.dart';
 
 class MailDialoog extends StatelessWidget {
+  final int score;
+  final TextEditingController tekstveldController = TextEditingController();
+  final tijdOpmaak = DateFormat('dd-MM-yyyy H:m:s');
+
+  MailDialoog(this.score);
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text('Voer jouw e-mailadres in'),
-      content: TextField(decoration: InputDecoration(hintText: 'naam@domein.be'),),
+      content: TextField(
+        controller: tekstveldController,
+        decoration: InputDecoration(hintText: 'naam@domein.be'),
+      ),
       actions: [
         TextButton(
           child: Text('Annuleer'),
@@ -15,9 +25,37 @@ class MailDialoog extends StatelessWidget {
         ),
         TextButton(
           child: Text('Verstuur'),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => stuurMail(),
         )
       ],
     );
+  }
+
+  stuurMail() async {
+    const String gebruikersnaam = '...@thomasmore.be';  // gebruik je nummer
+    const String paswoord = '...';
+
+    final smtpServer = SmtpServer("smtp.office365.com",
+        port: 587,
+        allowInsecure: true,
+        ignoreBadCertificate: true,
+        username: gebruikersnaam,
+        password: paswoord
+    );
+
+    final message = Message();
+    message.from = Address(gebruikersnaam, 'Flutter Quiz');
+    message.recipients.add(tekstveldController.text);
+    message.subject = 'Uitslag van de quiz';
+    message.html = "<h1>Uitslag</h1>\n" +
+        "<p>Je score is $score</p>" +
+        "<p>Verzonden op ${tijdOpmaak.format(DateTime.now())}</p>";
+
+    try {
+      await send(message, smtpServer);
+      print('Succesvol verzonden');
+    } catch(error) {
+      print(error);
+    }
   }
 }
