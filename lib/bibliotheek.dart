@@ -10,40 +10,17 @@ const TextStyle kopTekst =
 
 List<dynamic> vragen = [
   {
-    "vraag": "Waarvan is dit het logo?",
-    "antwoorden": ["Android Studio", "Dart", "Flutter", "Xcode", "IntelliJ"],
-    "correct": 2,
-    "afbeelding": "flutter.png"
-  },
-  {
-    "vraag": "Welke taal gebruiken we in Flutter?",
-    "antwoorden": ["C", "Dart", "Java", "Python"],
-    "correct": 1,
-    "afbeelding": "programminglanguages.png"
-  },
-  {
-    "vraag": "Wat is een voorbeeld van een widget?",
-    "antwoorden": ["class", "Container", "const", "import"],
-    "correct": 1,
-    "afbeelding": "widgettree.png"
-  }
-];
-
-List<dynamic> vragen2 = [
-  {
     "vraag": "In welk jaar ontstond het besturingssysteem MS-DOS?",
     "antwoorden": ["1981", "1975", "1984", "1978"],
     "correct": 0,
-    "afbeelding":
-        "http://marcdc-tm.github.io/flutter-quiz/afbeeldingen/msdos.png",
+    "afbeelding": "msdos.png",
     "categorie": ["ICT", "history"]
   },
   {
     "vraag": "In welk jaar werd de Sovjet-Unie officieel opgericht?",
     "antwoorden": ["1917", "1919", "1922", "1925", "1931"],
     "correct": 2,
-    "afbeelding":
-        "http://marcdc-tm.github.io/flutter-quiz/afbeeldingen/sovjetunion.png",
+    "afbeelding": "sovjetunion.png",
     "categorie": ["history"]
   },
   {
@@ -51,8 +28,7 @@ List<dynamic> vragen2 = [
         "Hendrik VIII was van 1509 tot 1547 koning van Engeland. Hoeveel keer is hij gehuwd?",
     "antwoorden": ["5", "6", "7", "8"],
     "correct": 1,
-    "afbeelding":
-        "http://marcdc-tm.github.io/flutter-quiz/afbeeldingen/henry8.jpg",
+    "afbeelding": "henry8.jpg",
     "categorie": ["history"]
   },
   {
@@ -66,32 +42,28 @@ List<dynamic> vragen2 = [
       "Liberté et Egalité"
     ],
     "correct": 2,
-    "afbeelding":
-        "http://marcdc-tm.github.io/flutter-quiz/afbeeldingen/commune.jpg",
+    "afbeelding": "commune.jpg",
     "categorie": ["history"]
   },
   {
     "vraag": "Waarvan is dit het logo?",
     "antwoorden": ["Android Studio", "Dart", "Flutter", "Xcode", "IntelliJ"],
     "correct": 2,
-    "afbeelding":
-        "http://marcdc-tm.github.io/flutter-quiz/afbeeldingen/flutterbis.png",
+    "afbeelding": "flutterbis.png",
     "categorie": ["ICT"]
   },
   {
     "vraag": "Welke taal gebruiken we in Flutter?",
     "antwoorden": ["C", "Dart", "Java", "Python"],
     "correct": 1,
-    "afbeelding":
-        "http://marcdc-tm.github.io/flutter-quiz/afbeeldingen/programminglanguages.png",
+    "afbeelding": "programminglanguages.png",
     "categorie": ["ICT"]
   },
   {
     "vraag": "Wat is een voorbeeld van een widget?",
     "antwoorden": ["class", "Container", "const", "import"],
     "correct": 1,
-    "afbeelding":
-        "http://marcdc-tm.github.io/flutter-quiz/afbeeldingen/widgettree.png",
+    "afbeelding": "widgettree.png",
     "categorie": ["ICT"]
   },
   {
@@ -99,8 +71,7 @@ List<dynamic> vragen2 = [
         "In welk jaar werd de Amerikaanse onafhankelijkheidsverklaring ondertekend?",
     "antwoorden": ["1821", "1813", "1776", "1795"],
     "correct": 2,
-    "afbeelding":
-        "http://marcdc-tm.github.io/flutter-quiz/afbeeldingen/usindependence.jpg",
+    "afbeelding": "usindependence.jpg",
     "categorie": ["history"]
   },
   {
@@ -112,8 +83,7 @@ List<dynamic> vragen2 = [
       "Paul Allen"
     ],
     "correct": 1,
-    "afbeelding":
-        "http://marcdc-tm.github.io/flutter-quiz/afbeeldingen/alainc.jpg",
+    "afbeelding": "alainc.jpg",
     "categorie": ["ICT", "history"]
   },
   {
@@ -121,8 +91,7 @@ List<dynamic> vragen2 = [
         "In 1953 ontwikkelde John W. Backus een praktischer alternatief voor assembleertaal. Welke programmeertaal is toen ontstaan?",
     "antwoorden": ["COBOL", "Java", "Basic", "LISP", "Fortran"],
     "correct": 4,
-    "afbeelding":
-        "http://marcdc-tm.github.io/flutter-quiz/afbeeldingen/programl.jpg",
+    "afbeelding": "programl.jpg",
     "categorie": ["ICT", "history"]
   },
   {
@@ -130,16 +99,14 @@ List<dynamic> vragen2 = [
         "Aan hoeveel mensen heeft naar schatting de tweede wereldoorlog het leven gekost?",
     "antwoorden": ["18 miljoen", "103 miljoen", "55 miljoen", "39 miljoen"],
     "correct": 2,
-    "afbeelding":
-        "http://marcdc-tm.github.io/flutter-quiz/afbeeldingen/wo2doden.jpg",
+    "afbeelding": "wo2doden.jpg",
     "categorie": ["history"]
   },
   {
     "vraag": "Welke widget heeft maar 1 child?",
     "antwoorden": ["Column", "Container", "ListView", "Row"],
     "correct": 1,
-    "afbeelding":
-        "http://marcdc-tm.github.io/flutter-quiz/afbeeldingen/widgetchild.png",
+    "afbeelding": "widgetchild.png",
     "categorie": ["ICT"]
   },
   {
@@ -152,8 +119,7 @@ List<dynamic> vragen2 = [
       "Runner.\nxcodeproj"
     ],
     "correct": 2,
-    "afbeelding":
-        "http://marcdc-tm.github.io/flutter-quiz/afbeeldingen/pubspec.png",
+    "afbeelding": "pubspec.png",
     "categorie": ["ICT"]
   }
 ];
