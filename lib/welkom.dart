@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-
-import 'bibliotheek.dart' as lib;
+import 'package:video_player/video_player.dart';
 
 class Welkom extends StatelessWidget {
-  @override
+  final VideoPlayerController videoController = VideoPlayerController.asset("assets/video/intro.mp4");
+
   Widget build(BuildContext context) {
-    return Container(color: Colors.green);
+    videoController
+      ..initialize()
+      ..play();
+    return VideoPlayer(videoController);
   }
 }

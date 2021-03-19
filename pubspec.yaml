@@ -21,6 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  audioplayers: 0.17.0
+  video_player: 1.0.1
+  mailer: ^3.3.0
+  email_validator: ^1.0.6
   flutter:
     sdk: flutter
 
@@ -30,9 +34,6 @@ dependencies:
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
-  audioplayers: 0.17.0
-  mailer: ^3.3.0
-  email_validator: ^1.0.6
   flutter_test:
     sdk: flutter
 
@@ -65,6 +66,7 @@ flutter:
     - assets/images/wo2doden.jpg
     - assets/audio/goed.mp3
     - assets/audio/fout.mp3
+    - assets/video/intro.mp4
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

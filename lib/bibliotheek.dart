@@ -124,4 +124,4 @@ List<dynamic> vragen = [
   }
 ];
 
-StreamController<bool> startOpnieuw = StreamController<bool>();
+StreamController<bool> startOpnieuw = StreamController.broadcast();
