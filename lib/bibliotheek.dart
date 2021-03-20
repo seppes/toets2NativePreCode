@@ -112,7 +112,7 @@ List<dynamic> vragen = [
   {
     "vraag": "De bestorming van de Bastille wordt vaak gezien als het startpunt van de Franse Revolutie. Wanneer vond die plaats?",
     "antwoorden": ["14 juli 1789", "28 juni 1698", "25 juli 1791", "2 augustus 1802"],
-    "correct": 1,
+    "correct": 0,
     "afbeelding": "bastille.jpg",
     "categorie": ["history", "revolution"]
   },
@@ -133,4 +133,20 @@ List<dynamic> vragen = [
 
 StreamController<bool> startOpnieuw = StreamController.broadcast();
 
+SmtpData smtpData = SmtpData();
 
+class SmtpData {
+  String username;
+  String password;
+  String smtphost;
+  int smtpport;
+
+  bool isConfigured() {
+    bool ok = true;
+    if (username==null || username.trim()=="") ok = false;
+    if (password==null || password.trim()=="") ok = false;
+    if (smtphost==null || smtphost.trim()=="") ok = false;
+    if (smtpport==null || smtpport<=0) ok = false;
+    return ok;
+  }
+}
