@@ -21,7 +21,7 @@ List<dynamic> vragen = [
     "antwoorden": ["1917", "1919", "1922", "1925", "1931"],
     "correct": 2,
     "afbeelding": "sovjetunion.png",
-    "categorie": ["history"]
+    "categorie": ["history", "revolution"]
   },
   {
     "vraag":
@@ -43,7 +43,7 @@ List<dynamic> vragen = [
     ],
     "correct": 2,
     "afbeelding": "commune.jpg",
-    "categorie": ["history"]
+    "categorie": ["history", "revolution"]
   },
   {
     "vraag": "Waarvan is dit het logo?",
@@ -75,7 +75,7 @@ List<dynamic> vragen = [
     "categorie": ["history"]
   },
   {
-    "vraag": "Wie creëerde rons 1972 de programmeertaal Prolog?",
+    "vraag": "Wie creëerde rond 1972 de programmeertaal Prolog?",
     "antwoorden": [
       "Robert Kowalski",
       "Alain Colmerauer",
@@ -110,6 +110,13 @@ List<dynamic> vragen = [
     "categorie": ["ICT"]
   },
   {
+    "vraag": "De bestorming van de Bastille wordt vaak gezien als het startpunt van de Franse Revolutie. Wanneer vond die plaats?",
+    "antwoorden": ["14 juli 1789", "28 juni 1698", "25 juli 1791", "2 augustus 1802"],
+    "correct": 1,
+    "afbeelding": "bastille.jpg",
+    "categorie": ["history", "revolution"]
+  },
+  {
     "vraag":
         "In welk bestand declareert u afbeeldingen en andere bronnen in Flutter?",
     "antwoorden": [
@@ -125,3 +132,5 @@ List<dynamic> vragen = [
 ];
 
 StreamController<bool> startOpnieuw = StreamController.broadcast();
+
+

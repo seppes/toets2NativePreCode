@@ -4,7 +4,7 @@ import 'bibliotheek.dart' as lib;
 
 import 'welkom.dart';
 import 'quiz.dart';
-import 'info.dart';
+import 'config.dart';
 
 void main() {
   runApp(MyApp());
@@ -38,14 +38,14 @@ class QuizApp extends StatelessWidget {
                 tabs: [
                   Tab(icon:Icon(Icons.home), text:"welkom"),
                   Tab(icon:Icon(Icons.live_help), text:"QUIZ!"),
-                  Tab(icon:Icon(Icons.info), text:"over deze app"),
+                  Tab(icon:Icon(Icons.settings), text:"configuratie"),
                 ]
             ),
             body: TabBarView(
               children: [
                 Welkom(),
                 Quiz(),
-                Info()
+                Config()
               ],
             )
         )
