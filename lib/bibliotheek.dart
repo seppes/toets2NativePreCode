@@ -140,13 +140,9 @@ class SmtpData {
   String password;
   String smtphost;
   int smtpport;
+  bool isValidConfigured = false;
 
   bool isConfigured() {
-    bool ok = true;
-    if (username==null || username.trim()=="") ok = false;
-    if (password==null || password.trim()=="") ok = false;
-    if (smtphost==null || smtphost.trim()=="") ok = false;
-    if (smtpport==null || smtpport<=0) ok = false;
-    return ok;
+    return isValidConfigured;
   }
 }
