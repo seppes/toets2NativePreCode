@@ -7,6 +7,7 @@ import 'quiz.dart';
 import 'config.dart';
 
 void main() {
+  lib.smtpData = SmtpData();
   runApp(MyApp());
 }
 
