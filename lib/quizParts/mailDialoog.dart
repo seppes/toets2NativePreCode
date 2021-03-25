@@ -4,6 +4,8 @@ import 'package:mailer/smtp_server.dart';
 import 'package:intl/intl.dart';
 import 'package:email_validator/email_validator.dart';
 
+import '../bibliotheek.dart' as lib;
+
 class MailDialoog extends StatelessWidget {
   final int score;
   final TextEditingController tekstveldController = TextEditingController();
@@ -50,11 +52,11 @@ class MailDialoog extends StatelessWidget {
   }
 
   stuurMail() async {
-    const String gebruikersnaam = '...@thomasmore.be';  // gebruik je nummer
-    const String paswoord = '...';
+    String gebruikersnaam = lib.smtpData.username;  // gebruik je nummer
+    String paswoord = lib.smtpData.password;
 
-    final smtpServer = SmtpServer("smtp.office365.com",
-        port: 587,
+    final smtpServer = SmtpServer(lib.smtpData.smtphost,
+        port: lib.smtpData.smtpport,
         allowInsecure: true,
         ignoreBadCertificate: true,
         username: gebruikersnaam,
