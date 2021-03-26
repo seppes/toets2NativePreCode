@@ -21,7 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  audioplayers: 0.17.0
+  audioplayers: 0.18.1
   video_player: 1.0.1
   mailer: ^3.3.0
   email_validator: ^1.0.6
